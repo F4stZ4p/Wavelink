@@ -296,14 +296,14 @@ class Player:
     async def set_volume(self, vol: int):
         """|coro|
 
-        Set the player's volume, between 0 and 1000.
+        Set the player's volume
 
         Parameters
         ------------
         vol: int
             The volume to set the player to.
         """
-        self.volume = max(min(vol, 1000), 0)
+        self.volume = vol
         await self.node._send(op='volume', guildId=str(self.guild_id), volume=self.volume)
         __log__.debug(f'PLAYER | Set volume:: {self.volume} ({self.channel_id})')
 
